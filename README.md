@@ -1,49 +1,54 @@
-# 📌 NF-MEI: Visão Geral
+# 📌 Barber Bross: Visão Geral
 
-### 🧨 Problema
-Muitos MEIs e autônomos enfrentam dificuldades para emitir notas fiscais devido à burocracia, sistemas confusos oferecidos por prefeituras e falta de organização com seus clientes, serviços e orçamentos. O processo é demorado, pouco intuitivo e feito de forma manual.
+## 🧨 Problema
+Muitas barbearias enfrentam dificuldades para gerenciar seus agendamentos, controlar seu fluxo de clientes e manter uma comunicação de marketing eficiente.
+O marketing digital é, em geral, pouco explorado ou mal executado, o que afeta a fidelização e a taxa de retorno. Além disso, os sistemas existentes no mercado são genéricos, não oferecem recursos de personalização e não aproveitam inteligência artificial para impulsionar o negócio.
 
-### 💡 Solução
-Um aplicativo simples, acessível e voltado exclusivamente para o MEI. O NF-MEI permite gerar notas fiscais com agilidade, emitir orçamentos e recibos profissionais e organizar clientes e serviços de forma prática.
+## 💡 Solução
+O Barber Bross é um ERP especializado para barbearias, integrado a um aplicativo de agendamento para clientes.
+A plataforma incentiva o uso de ferramentas exclusivas como fidelização por pontos, promoções segmentadas, marketplace, e marketing com IA, incluindo sugestões de postagens baseadas em tendências e edição inteligente de conteúdo.
+Com gamificação e integração total entre o app do cliente e o ERP da barbearia, o Barber Bross aumenta a recorrência e o faturamento.
 
-### 👥 Usuários e Clientes
-#### Usuários (quem usa):
+## 👥 Usuários e Clientes
+### Usuários (quem usa):
+- Donos e gestores de barbearias
+- Barbeiros autônomos que desejam organização profissional
+- Recepcionistas e equipe de atendimento
+- Clientes das barbearias (via aplicativo)
 
-- Microempreendedores Individuais
-- Prestadores de serviço (designers, programadores, eletricistas, etc.)
-- Pequenos vendedores autônomos
-- Profissionais liberais com CNPJ
+### Clientes (quem paga):
+- As próprias barbearias, assinando o ERP Barber Bross para gestão e marketing.
+- Possível modelo de cobrança por assinatura mensal ou anual.
 
-#### Clientes (quem paga):
-- Os próprios usuários, no plano NF-MEI Plus, buscando mais agilidade e controle financeiro.
+## 🛠 Recursos Principais
+### Versão Inicial:
+- ERP completo para controle de agendamentos e serviços
+- Aplicativo para clientes realizarem agendamentos
+- Gamificação com acúmulo de pontos de fidelidade
+- Emissão de promoções segmentadas
+- Integração entre app e ERP
 
-### 🛠 Recursos Principais
-#### Versão Free:
-- Emissão manual de notas fiscais
-- Geração de PDF profissional da nota
-- Histórico básico de NFs
+### Futuras Expansões:
+- Setorização para grandes barbearias
+- Marketplace de produtos para venda direta no app
+- Edição de vídeos e fotos otimizada por IA
+- Relatórios avançados de desempenho e marketing
+  
+## 📲 Canais
+- Divulgação em redes sociais (Instagram, TikTok, YouTube)
+- Parcerias com barbeiros influentes e academias de barbeiros
+- Visitas comerciais a barbearias locais
+- Indicação boca a boca e programas de parceria
 
-#### Versão Plus:
-- Cadastro de clientes e serviços
-- Geração de orçamentos e recibos profissionais
-- Conversão de orçamentos em NFs com 1 clique
-- Relatórios básicos de faturamento
+## 💸 Custo e Receita
+### Custos:
+- Desenvolvimento e manutenção do ERP e aplicativo
+- Hospedagem e infraestrutura de servidores
+- Custos com IA para edição e geração de conteúdo
+- Marketing e aquisição de clientes
 
-### 📲 Canais
-- Aplicativo Web (inicialmente)
-- Divulgação via redes sociais (Instagram, TikTok, YouTube)
-- Parcerias com contadores e cursos de MEI
-- Comunidades de autônomos e grupos de WhatsApp
-
-### 💸 Custo e Receita
-#### Custos:
-- Desenvolvimento do sistema
-- Hospedagem (servidor, banco de dados, envio de PDFs)
-- Manutenção e atualizações
-- Marketing digital
-
-#### Receitas:
-- Plano gratuito com recursos básicos
-- Plano NF-MEI Plus com assinatura mensal (ex: R$ 9,90)
-- Possibilidade de planos anuais com desconto
-- Potencial de revenda white-label para contadores
+### Receitas:
+- Assinatura mensal/anual do ERP Barber Bross
+- Planos diferenciados por número de usuários e recursos
+- Possibilidade de planos white-label para redes de barbearia
+  
