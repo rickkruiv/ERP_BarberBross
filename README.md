@@ -51,4 +51,7 @@ Com gamificação e integração total entre o app do cliente e o ERP da barbear
 - Assinatura mensal/anual do ERP Barber Bross
 - Planos diferenciados por número de usuários e recursos
 - Possibilidade de planos white-label para redes de barbearia
-  
+
+### LINKS DO PROJETO
+- Casos de uso: 
+  - https://docs.google.com/document/d/1VLvyQynFB-TcpSlowPOGPLtNUUBoTezcrOfW7T5O9fM/edit?usp=sharing
