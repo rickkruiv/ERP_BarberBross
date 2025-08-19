@@ -54,4 +54,4 @@ Com gamificação e integração total entre o app do cliente e o ERP da barbear
 
 ### LINKS DO PROJETO
 - Casos de uso: 
-  - https://docs.google.com/document/d/1VLvyQynFB-TcpSlowPOGPLtNUUBoTezcrOfW7T5O9fM/edit?usp=sharing
+  - https://docs.google.com/document/d/1JldRZEcSxwHvOV7EdgJ_J538jFn8PexUEMNCBNx17qo/edit?tab=t.0
