@@ -29,7 +29,7 @@ Com gamificação e integração total entre o app do cliente e o ERP da barbear
 - Integração entre app e ERP
 
 ### Futuras Expansões:
-- Setorização para grandes barbearias
+- Setorização para grandes barbearias e salões de beleza
 - Marketplace de produtos para venda direta no app
 - Edição de vídeos e fotos otimizada por IA
 - Relatórios avançados de desempenho e marketing
