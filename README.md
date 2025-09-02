@@ -53,5 +53,3 @@ Com gamificação e integração total entre o app do cliente e o ERP da barbear
 - Possibilidade de planos white-label para redes de barbearia
 
 ### LINKS DO PROJETO
-- Casos de uso: 
-  - https://docs.google.com/document/d/1JldRZEcSxwHvOV7EdgJ_J538jFn8PexUEMNCBNx17qo/edit?tab=t.0
