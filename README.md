@@ -52,4 +52,15 @@ Com gamificação e integração total entre o app do cliente e o ERP da barbear
 - Planos diferenciados por número de usuários e recursos
 - Possibilidade de planos white-label para redes de barbearia
 
+## Partes Interessadas
+| Nome                      | Função                     |
+|---------------------------|----------------------------|
+| Diogo Souza Silva         | Programador                |
+| Erick Grisoste            | P.O / Programador          |
+| Heber Ruan Ferreira       | Programador                |
+| Henrique Ferreira Polizer | Gestor / Programador       |
+| Joao Filipe Pavan         | Programador                |
+| Pedro Antonio             | Scrum Master / Programador |
+
+
 ### LINKS DO PROJETO
