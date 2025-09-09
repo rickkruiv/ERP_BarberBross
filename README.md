@@ -56,11 +56,11 @@ Com gamificação e integração total entre o app do cliente e o ERP da barbear
 | Nome                      | Função                     |
 |---------------------------|----------------------------|
 | Diogo Souza Silva         | Programador                |
-| Erick Grisoste            | P.O / Programador          |
+| Erick Grisoste            | Scrum Master / Programador |
 | Heber Ruan Ferreira       | Programador                |
 | Henrique Ferreira Polizer | Gestor / Programador       |
 | Joao Filipe Pavan         | Programador                |
-| Pedro Antonio             | Scrum Master / Programador |
+| Pedro Antonio             | P.O / Programador          |
 
 
 ### LINKS DO PROJETO
