@@ -101,26 +101,24 @@ export default function Users() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {Array.isArray(data) ? (
-                  data.map((row) => (
-                    <TableRow key={row.id} hover>
-                      <TableCell>{row.id}</TableCell>
-                      <TableCell>{row.nome}</TableCell>
-                      <TableCell>{row.email}</TableCell>
-                      <TableCell align="right">
-                        <IconButton onClick={(e) => handleMenu(e, row)} aria-label={`mais ações de ${row.nome}`}>
-                          <MoreVertIcon />
-                        </IconButton>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                ) : (
-                  <TableRow>
-                    <TableCell colSpan={4} align="center">
-                      ❌ Data não é array: {JSON.stringify(data)}
+               {(data || []).map((row) => (
+                  <TableRow key={row.id} hover>
+                    <TableCell>{row.id}</TableCell>
+                    <TableCell>{row.nome}</TableCell>
+                    <TableCell>{row.email}</TableCell>
+                    <TableCell align="right">
+                      <IconButton onClick={(e) => handleMenu(e, row)} aria-label={`mais ações de ${row.nome}`}>
+                        <MoreVertIcon />
+                      </IconButton>
                     </TableCell>
                   </TableRow>
+                ))}
+                {!data?.length && (
+                  <TableRow>
+                    <TableCell colSpan={4} align="center">Sem usuários</TableCell>
+                  </TableRow>
                 )}
+
               </TableBody>
             </Table>
           </TableContainer>
