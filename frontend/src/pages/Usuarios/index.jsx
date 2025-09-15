@@ -17,29 +17,29 @@ export default function Users() {
 
   const { data, isLoading } = useQuery({
     queryKey: ["users"],
-    // queryFn: async () => (await api.get("/rondonia")).data,
+    queryFn: async () => (await api.get("/clientes")).data,
   });
 
   const mCreate = useMutation({
-    // mutationFn: async (body) => (await api.post("/rondis", body)).data,
+    mutationFn: async (body) => (await api.post("/clientes", body)).data,
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["users"] });
       setSnack({ open: true, msg: "Usuário criado", sev: "success" });
     },
   });
 
-  
+
   const mEdit = useMutation({
-    // mutationFn: async ({ id, body }) => (await api.put(`/teste`, body)).data,
+    mutationFn: async ({ id, body }) => (await api.put(`/clientes`, body)).data,
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["users"] });
       setSnack({ open: true, msg: "Usuário atualizado", sev: "success" });
     },
   });
 
-  
+
   const mDelete = useMutation({
-    // mutationFn: async (id) => (await api.delete(`/molodoy`)).data,
+    mutationFn: async (id) => (await api.delete(`/clientes`)).data,
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["users"] });
       setSnack({ open: true, msg: "Usuário excluído", sev: "success" });
@@ -101,21 +101,24 @@ export default function Users() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {(data || []).map((row) => (
-                  <TableRow key={row.id} hover>
-                    <TableCell>{row.id}</TableCell>
-                    <TableCell>{row.nome}</TableCell>
-                    <TableCell>{row.email}</TableCell>
-                    <TableCell align="right">
-                      <IconButton onClick={(e) => handleMenu(e, row)} aria-label={`mais ações de ${row.nome}`}>
-                        <MoreVertIcon />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))}
-                {!data?.length && (
+                {Array.isArray(data) ? (
+                  data.map((row) => (
+                    <TableRow key={row.id} hover>
+                      <TableCell>{row.id}</TableCell>
+                      <TableCell>{row.nome}</TableCell>
+                      <TableCell>{row.email}</TableCell>
+                      <TableCell align="right">
+                        <IconButton onClick={(e) => handleMenu(e, row)} aria-label={`mais ações de ${row.nome}`}>
+                          <MoreVertIcon />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
                   <TableRow>
-                    <TableCell colSpan={4} align="center">Sem usuários</TableCell>
+                    <TableCell colSpan={4} align="center">
+                      ❌ Data não é array: {JSON.stringify(data)}
+                    </TableCell>
                   </TableRow>
                 )}
               </TableBody>
