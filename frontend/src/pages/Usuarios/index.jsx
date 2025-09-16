@@ -28,18 +28,26 @@ export default function Users() {
     },
   });
 
-  
+
   const mEdit = useMutation({
+<<<<<<< HEAD
     mutationFn: async ({ id, body }) => (await api.put("/clientes", body)).data,
+=======
+    mutationFn: async ({ id, body }) => (await api.put(`/clientes`, body)).data,
+>>>>>>> 50420d08e57d3749073e01d7054dfc3f99c92984
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["users"] });
       setSnack({ open: true, msg: "Usuário atualizado", sev: "success" });
     },
   });
 
-  
+
   const mDelete = useMutation({
+<<<<<<< HEAD
     mutationFn: async (id) => (await api.delete("/clientes")).data,
+=======
+    mutationFn: async (id) => (await api.delete(`/clientes`)).data,
+>>>>>>> 50420d08e57d3749073e01d7054dfc3f99c92984
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["users"] });
       setSnack({ open: true, msg: "Usuário excluído", sev: "success" });
@@ -101,7 +109,7 @@ export default function Users() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {(data || []).map((row) => (
+               {(data || []).map((row) => (
                   <TableRow key={row.id} hover>
                     <TableCell>{row.id}</TableCell>
                     <TableCell>{row.nome}</TableCell>
@@ -118,6 +126,7 @@ export default function Users() {
                     <TableCell colSpan={4} align="center">Sem usuários</TableCell>
                   </TableRow>
                 )}
+
               </TableBody>
             </Table>
           </TableContainer>
