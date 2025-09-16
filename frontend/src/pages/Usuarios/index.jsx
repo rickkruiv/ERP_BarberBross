@@ -1,102 +1,78 @@
+// src/pages/Users/index.jsx
 import React, { useState } from "react";
-import {
-  Box, Paper, Typography, Table, TableBody, TableCell, TableContainer,
-  TableHead, TableRow, IconButton, Menu, MenuItem, Snackbar, Alert,
-  Stack, Button, CircularProgress
-} from "@mui/material";
+import { Box, Paper, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton, Menu, MenuItem, Snackbar, Alert, Stack, Button, CircularProgress } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import api from "../../services/index.jsx"
+import api from "../../services/index.jsx";
+import ModalCadastro from "../../components/modalCadastro/index.jsx";
+
+function digits(s) { return String(s ?? "").replace(/\D/g, ""); }
+function fmt(s) { const d = digits(s); if (d.length >= 11) return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7,11)}`; if (d.length === 10) return `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6,10)}`; return d; }
+function normalizar(l) { const id = l.id_cliente ?? l.id ?? l.clienteId ?? l.codigo ?? null; const nome = l.nome ?? ""; const email = l.email ?? ""; const telefone = l.telefone ?? ""; return { id, nome, email, telefone, raw: l }; }
 
 export default function Users() {
   const qc = useQueryClient();
   const [menuAnchor, setMenuAnchor] = useState(null);
   const [selected, setSelected] = useState(null);
   const [snack, setSnack] = useState({ open: false, msg: "", sev: "success" });
+  const [openModal, setOpenModal] = useState(false);
+  const [editando, setEditando] = useState(null);
+  const [modalKey, setModalKey] = useState(0);
 
-
-  const { data, isLoading } = useQuery({
+  const { data: rows = [], isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: async () => (await api.get("/clientes")).data,
+    select: (res) => { const arr = Array.isArray(res) ? res : (res?.content ?? []); return arr.map(normalizar); }
   });
 
   const mCreate = useMutation({
     mutationFn: async (body) => (await api.post("/clientes", body)).data,
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["users"] });
-      setSnack({ open: true, msg: "Usuário criado", sev: "success" });
-    },
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ["users"] }); setSnack({ open: true, msg: "Usuário criado", sev: "success" }); setOpenModal(false); setEditando(null); },
   });
-
 
   const mEdit = useMutation({
-<<<<<<< HEAD
-    mutationFn: async ({ id, body }) => (await api.put("/clientes", body)).data,
-=======
-    mutationFn: async ({ id, body }) => (await api.put(`/clientes`, body)).data,
->>>>>>> 50420d08e57d3749073e01d7054dfc3f99c92984
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["users"] });
-      setSnack({ open: true, msg: "Usuário atualizado", sev: "success" });
-    },
+    mutationFn: async ({ id, body }) => (await api.put(`/clientes/${id}`, body)).data,
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ["users"] }); setSnack({ open: true, msg: "Usuário atualizado", sev: "success" }); setOpenModal(false); setEditando(null); },
   });
 
-
   const mDelete = useMutation({
-<<<<<<< HEAD
-    mutationFn: async (id) => (await api.delete("/clientes")).data,
-=======
-    mutationFn: async (id) => (await api.delete(`/clientes`)).data,
->>>>>>> 50420d08e57d3749073e01d7054dfc3f99c92984
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["users"] });
-      setSnack({ open: true, msg: "Usuário excluído", sev: "success" });
-    },
+    mutationFn: async (id) => (await api.delete(`/clientes/${id}`)).data,
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ["users"] }); setSnack({ open: true, msg: "Usuário excluído", sev: "success" }); },
   });
 
   const openMenu = Boolean(menuAnchor);
   const handleMenu = (evt, row) => { setMenuAnchor(evt.currentTarget); setSelected(row); };
   const closeMenu = () => setMenuAnchor(null);
 
-  const handleNovo = async () => {
-    const nome = prompt("Nome:");
-    if (!nome) return;
-    const email = prompt("E-mail:");
-    if (!email) return;
-    const senha = prompt("Senha:");
-    if (!senha) return;
-    mCreate.mutate({ nome, email, senha });
-  };
+  const handleNovo = () => { setEditando(null); setModalKey(k => k + 1); setOpenModal(true); };
 
-  const onEditar = async () => {
+  const onEditar = () => {
     closeMenu();
     if (!selected) return;
-    const novoNome = prompt("Novo nome:", selected.nome ?? "");
-    if (novoNome && novoNome !== selected.nome) {
-      mEdit.mutate({ id: selected.id, body: { nome: novoNome } });
+    setEditando(selected);
+    setModalKey(k => k + 1);
+    setOpenModal(true);
+    if (!selected.telefone && selected.id) {
+      api.get(`/clientes/${selected.id}`)
+        .then(({ data }) => { const row = normalizar(data); setEditando(row); setModalKey(k => k + 1); })
+        .catch(() => { setSnack({ open: true, msg: "Não foi possível carregar dados completos para edição.", sev: "warning" }); });
     }
   };
 
-  const onExcluir = () => { closeMenu(); if (selected) mDelete.mutate(selected.id); };
+  const onExcluir = () => { closeMenu(); if (selected?.id) mDelete.mutate(selected.id); };
+
+  const salvarModal = async (payload) => { if (editando?.id) mEdit.mutate({ id: editando.id, body: payload }); else mCreate.mutate(payload); };
 
   return (
     <Box sx={{ maxWidth: 900, mx: "auto", mt: 4 }}>
       <Paper sx={{ p: 2 }}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 1 }}>
           <Typography variant="h5">Usuários</Typography>
-          <Button
-            variant="contained"
-            onClick={handleNovo}
-            disabled={mCreate.isPending}
-          >
-            {mCreate.isPending ? "Salvando..." : "Novo"}
-          </Button>
+          <Button variant="contained" onClick={handleNovo} disabled={mCreate.isPending || mEdit.isPending}>Novo</Button>
         </Stack>
 
         {isLoading ? (
-          <Box sx={{ p: 4, textAlign: "center" }}>
-            <CircularProgress />
-          </Box>
+          <Box sx={{ p: 4, textAlign: "center" }}><CircularProgress /></Box>
         ) : (
           <TableContainer>
             <Table size="medium">
@@ -105,50 +81,41 @@ export default function Users() {
                   <TableCell>ID</TableCell>
                   <TableCell>Nome</TableCell>
                   <TableCell>E-mail</TableCell>
+                  <TableCell>Telefone</TableCell>
                   <TableCell align="right">Ações</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-               {(data || []).map((row) => (
-                  <TableRow key={row.id} hover>
-                    <TableCell>{row.id}</TableCell>
+                {rows.map((row) => (
+                  <TableRow key={row.id ?? row.email} hover>
+                    <TableCell>{row.id ?? "-"}</TableCell>
                     <TableCell>{row.nome}</TableCell>
                     <TableCell>{row.email}</TableCell>
+                    <TableCell>{row.telefone ? fmt(row.telefone) : "-"}</TableCell>
                     <TableCell align="right">
-                      <IconButton onClick={(e) => handleMenu(e, row)} aria-label={`mais ações de ${row.nome}`}>
-                        <MoreVertIcon />
-                      </IconButton>
+                      <IconButton onClick={(e) => handleMenu(e, row)} aria-label="mais ações"><MoreVertIcon /></IconButton>
                     </TableCell>
                   </TableRow>
                 ))}
-                {!data?.length && (
+                {!rows.length && (
                   <TableRow>
-                    <TableCell colSpan={4} align="center">Sem usuários</TableCell>
+                    <TableCell colSpan={5} align="center">Sem usuários</TableCell>
                   </TableRow>
                 )}
-
               </TableBody>
             </Table>
           </TableContainer>
         )}
       </Paper>
 
-      <Menu
-        anchorEl={menuAnchor}
-        open={openMenu}
-        onClose={closeMenu}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
-      >
+      <Menu anchorEl={menuAnchor} open={openMenu} onClose={closeMenu} anchorOrigin={{ vertical: "bottom", horizontal: "right" }} transformOrigin={{ vertical: "top", horizontal: "right" }}>
         <MenuItem onClick={onEditar} disabled={mEdit.isPending}>Editar</MenuItem>
         <MenuItem onClick={onExcluir} disabled={mDelete.isPending}>Excluir</MenuItem>
       </Menu>
 
-      <Snackbar
-        open={snack.open}
-        autoHideDuration={3000}
-        onClose={() => setSnack({ ...snack, open: false })}
-      >
+      <ModalCadastro key={modalKey} open={openModal} onClose={() => { setOpenModal(false); setEditando(null); }} initialData={editando} onSubmit={salvarModal} loading={mCreate.isPending || mEdit.isPending} />
+
+      <Snackbar open={snack.open} autoHideDuration={3000} onClose={() => setSnack({ ...snack, open: false })}>
         <Alert severity={snack.sev} variant="filled">{snack.msg}</Alert>
       </Snackbar>
     </Box>
