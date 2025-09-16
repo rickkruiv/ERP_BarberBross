@@ -36,7 +36,7 @@ export default function ModalCadastro({ open, onClose, initialData, onSubmit, lo
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle>{criando ? "Novo usuário" : "Editar usuário"}</DialogTitle>
+      <DialogTitle>{criando ? "Novo Cliente" : "Editar Cliente"}</DialogTitle>
       <DialogContent dividers>
         <Stack spacing={2} sx={{ mt: 1 }}>
           <TextField label="Nome" name="nome" value={formik.values.nome} onChange={formik.handleChange} onBlur={formik.handleBlur} error={formik.touched.nome && Boolean(formik.errors.nome)} helperText={formik.touched.nome && formik.errors.nome} fullWidth />

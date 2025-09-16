@@ -38,6 +38,7 @@ export default function Register() {
         };
         await api.post("/clientes", payload);
         resetForm();
+        alert("Cliente cadastrado! Agora faça login.");
       } finally {
         setSubmitting(false);
       }
