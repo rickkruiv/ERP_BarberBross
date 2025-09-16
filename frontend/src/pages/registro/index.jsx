@@ -1,4 +1,3 @@
-// src/pages/Register.jsx
 import React from "react";
 import { Box, Paper, Typography, TextField, Button, Stack, Grid } from "@mui/material";
 import { useFormik } from "formik";
@@ -18,7 +17,7 @@ export default function Register() {
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
-        // await api.post("/users", values); 
+        await api.post("/clientes", values);
         resetForm();
         alert("Usuário cadastrado! Agora faça login.");
       } finally {

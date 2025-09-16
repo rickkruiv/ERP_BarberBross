@@ -17,7 +17,7 @@ const formik = useFormik({
     }),
     onSubmit: async (values, { setSubmitting }) => {
     try {
-    const { data } = await api.post("hebinho/lindinho", values);
+    const { data } = await api.post("/clientes", values);
     localStorage.setItem("token", data?.token || "");
     navigate("/users");
     } finally { setSubmitting(false); }
