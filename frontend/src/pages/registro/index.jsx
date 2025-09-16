@@ -18,7 +18,7 @@ export default function Register() {
     }),
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
-        // await api.post("/users", values); 
+        await api.post("/clientes", values); 
         resetForm();
         alert("Usuário cadastrado! Agora faça login.");
       } finally {

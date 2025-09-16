@@ -17,11 +17,11 @@ export default function Users() {
 
   const { data, isLoading } = useQuery({
     queryKey: ["users"],
-    // queryFn: async () => (await api.get("/rondonia")).data,
+    queryFn: async () => (await api.get("/clientes")).data,
   });
 
   const mCreate = useMutation({
-    // mutationFn: async (body) => (await api.post("/rondis", body)).data,
+    mutationFn: async (body) => (await api.post("/clientes", body)).data,
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["users"] });
       setSnack({ open: true, msg: "Usuário criado", sev: "success" });
@@ -30,7 +30,7 @@ export default function Users() {
 
   
   const mEdit = useMutation({
-    // mutationFn: async ({ id, body }) => (await api.put(`/teste`, body)).data,
+    mutationFn: async ({ id, body }) => (await api.put("/clientes", body)).data,
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["users"] });
       setSnack({ open: true, msg: "Usuário atualizado", sev: "success" });
@@ -39,7 +39,7 @@ export default function Users() {
 
   
   const mDelete = useMutation({
-    // mutationFn: async (id) => (await api.delete(`/molodoy`)).data,
+    mutationFn: async (id) => (await api.delete("/clientes")).data,
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["users"] });
       setSnack({ open: true, msg: "Usuário excluído", sev: "success" });
