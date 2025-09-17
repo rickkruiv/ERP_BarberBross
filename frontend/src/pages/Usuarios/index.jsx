@@ -1,3 +1,4 @@
+// src/pages/Users/index.jsx
 import React, { useState } from "react";
 import { Box, Paper, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton, Menu, MenuItem, Snackbar, Alert, Stack, Button, CircularProgress } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -26,17 +27,17 @@ export default function Users() {
 
   const mCreate = useMutation({
     mutationFn: async (body) => (await api.post("/clientes", body)).data,
-    onSuccess: () => { qc.invalidateQueries({ queryKey: ["users"] }); setSnack({ open: true, msg: "Usuário criado", sev: "success" }); setOpenModal(false); setEditando(null); },
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ["users"] }); setSnack({ open: true, msg: "Cliente criado", sev: "success" }); setOpenModal(false); setEditando(null); },
   });
 
   const mEdit = useMutation({
-    mutationFn: async ({ id, body }) => (await api.patch(`/clientes/${id}`, body)).data,
-    onSuccess: () => { qc.invalidateQueries({ queryKey: ["users"] }); setSnack({ open: true, msg: "Usuário atualizado", sev: "success" }); setOpenModal(false); setEditando(null); },
+    mutationFn: async ({ id, body }) => (await api.put(`/clientes/${id}`, body)).data,
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ["users"] }); setSnack({ open: true, msg: "Cliente atualizado", sev: "success" }); setOpenModal(false); setEditando(null); },
   });
 
   const mDelete = useMutation({
     mutationFn: async (id) => (await api.delete(`/clientes/${id}`)).data,
-    onSuccess: () => { qc.invalidateQueries({ queryKey: ["users"] }); setSnack({ open: true, msg: "Usuário excluído", sev: "success" }); },
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ["users"] }); setSnack({ open: true, msg: "Cliente excluído", sev: "success" }); },
   });
 
   const openMenu = Boolean(menuAnchor);
@@ -51,6 +52,11 @@ export default function Users() {
     setEditando(selected);
     setModalKey(k => k + 1);
     setOpenModal(true);
+    if (!selected.telefone && selected.id) {
+      api.get(`/clientes/${selected.id}`)
+        .then(({ data }) => { const row = normalizar(data); setEditando(row); setModalKey(k => k + 1); })
+        .catch(() => { setSnack({ open: true, msg: "Não foi possível carregar dados completos para edição.", sev: "warning" }); });
+    }
   };
 
   const onExcluir = () => { closeMenu(); if (selected?.id) mDelete.mutate(selected.id); };
@@ -61,7 +67,7 @@ export default function Users() {
     <Box sx={{ maxWidth: 900, mx: "auto", mt: 4 }}>
       <Paper sx={{ p: 2 }}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 1 }}>
-          <Typography variant="h5">Usuários</Typography>
+          <Typography variant="h5">Cliente</Typography>
           <Button variant="contained" onClick={handleNovo} disabled={mCreate.isPending || mEdit.isPending}>Novo</Button>
         </Stack>
 
@@ -93,7 +99,7 @@ export default function Users() {
                 ))}
                 {!rows.length && (
                   <TableRow>
-                    <TableCell colSpan={5} align="center">Sem usuários</TableCell>
+                    <TableCell colSpan={5} align="center">Sem Clientes</TableCell>
                   </TableRow>
                 )}
               </TableBody>

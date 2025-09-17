@@ -9,7 +9,7 @@ function digits(s) { return String(s ?? "").replace(/\D/g, ""); }
 function fmt(s) { const d = digits(s); if (d.length >= 11) return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7,11)}`; if (d.length === 10) return `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6,10)}`; return d; }
 
 export default function ModalCadastro({ open, onClose, initialData, onSubmit, loading }) {
-  const idReg = initialData?.id_cliente ?? initialData?.id ?? initialData?.clienteId ?? null;
+  const idReg = initialData?.id_cliente ?? null;
   const criando = !idReg;
   const telRef = useMask({ mask: "(99) 99999-9999", replacement: { 9: /\d/ } });
   const initialTelefone = fmt(initialData?.telefone || "");
@@ -26,11 +26,10 @@ export default function ModalCadastro({ open, onClose, initialData, onSubmit, lo
       nome: Yup.string().required("Obrigatório"),
       email: Yup.string().email("E-mail inválido").required("Obrigatório"),
       telefone: Yup.string().test("fone", "Telefone inválido", v => { const n = digits(v); return n.length === 11 || n.length === 10; }).required("Obrigatório"),
-      senha: criando ? Yup.string().min(6, "Min 6").required("Obrigatório") : Yup.string()
+      senha: criando ? Yup.string().min(6, "Minimo 6").required("Obrigatório") : Yup.string()
     }),
     onSubmit: async (v) => {
-      const base = { nome: v.nome, email: v.email, telefone: digits(v.telefone) };
-      const payload = criando ? { ...base, senha: v.senha } : { ...base };
+      const payload = { nome: v.nome, email: v.email, telefone: digits(v.telefone), ...(criando ? { senha: v.senha } : {}) };
       await onSubmit(payload);
     }
   });
