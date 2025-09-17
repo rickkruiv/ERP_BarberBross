@@ -39,10 +39,10 @@ function TopBar({ mode, toggleMode }) {
 return (
 <AppBar position="sticky">
     <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>BarberBros</Typography>
-        <Button color="inherit" component={Link} to="/login">Login</Button>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>BarberBrossssss</Typography>
+        {/* <Button color="inherit" component={Link} to="/login">Login</Button> */}
         <Button color="inherit" component={Link} to="/register">Cadastro</Button>
-        <Button color="inherit" component={Link} to="/users">Usuários</Button>
+        <Button color="inherit" component={Link} to="/users">Cliente</Button>
         <IconButton color="inherit" onClick={toggleMode} aria-label="alternar tema" sx={{ ml: 1 }}>
         {mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
         </IconButton>

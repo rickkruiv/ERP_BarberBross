@@ -8,10 +8,14 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_cliente;
+
     private String nome;
+
     @Column(unique = true)
     private String email;
+
     private String senha;
+    
     private String telefone;
 
     public Cliente() {
