@@ -29,7 +29,8 @@ export default function ModalCadastro({ open, onClose, initialData, onSubmit, lo
       senha: criando ? Yup.string().min(6, "Min 6").required("Obrigatório") : Yup.string()
     }),
     onSubmit: async (v) => {
-      const payload = { nome: v.nome, email: v.email, telefone: digits(v.telefone), ...(criando ? { senha: v.senha } : {}) };
+      const base = { nome: v.nome, email: v.email, telefone: digits(v.telefone) };
+      const payload = criando ? { ...base, senha: v.senha } : { ...base };
       await onSubmit(payload);
     }
   });
