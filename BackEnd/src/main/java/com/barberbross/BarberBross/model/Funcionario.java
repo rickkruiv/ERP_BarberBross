@@ -22,7 +22,7 @@ import jakarta.persistence.UniqueConstraint;
     name = "funcionario",
     uniqueConstraints  = {
         @UniqueConstraint(columnNames = {"cpf"}), 
-        @UniqueConstraint(columnNames = {"rg"}) 
+        @UniqueConstraint(columnNames = {"rg"})
     }
     )
 public class Funcionario {
