@@ -52,7 +52,7 @@ Com gamificação e integração total entre o app do cliente e o ERP da barbear
 - Planos diferenciados por número de usuários e recursos
 - Possibilidade de planos white-label para redes de barbearia
 
-## Partes Interessadas
+## Equipe
 | Nome                      | Função                     |
 |---------------------------|----------------------------|
 | Diogo Souza Silva         | Programador                |
