@@ -15,14 +15,17 @@ public class Agendamento {
     @Column(nullable = false)
     private LocalDateTime data_hora;
 
-    @Column(nullable = false)
-    private Long cliente_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
 
-    @Column(nullable = false)
-    private Long empresa_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "empresa_id", nullable = false)
+    private Empresa empresa;
 
-    @Column(nullable = false)
-    private Long servico_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "servico_id", nullable = false)
+    private Servico servico;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -30,12 +33,13 @@ public class Agendamento {
 
     private String observacao;
 
-    @Column(nullable = false)
-    private Long preco_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "preco_id", nullable = false)
+    private Preco preco;
 
-    @Column(nullable = false)
-    private Long funcionario_id;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "funcionario_id", nullable = false)
+    private Funcionario funcionario;
 
     public Agendamento() {
     }
@@ -54,25 +58,25 @@ public class Agendamento {
         this.data_hora = data_hora;
     }
 
-    public Long getCliente_id() {
-        return cliente_id;
+    public Cliente getCliente() {
+        return cliente;
     }
-    public void setCliente_id(Long cliente_id) {
-        this.cliente_id = cliente_id;
-    }
-
-    public Long getEmpresa_id() {
-        return empresa_id;
-    }
-    public void setEmpresa_id(Long empresa_id) {
-        this.empresa_id = empresa_id;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Long getServico_id() {
-        return servico_id;
+    public Empresa getEmpresa() {
+        return empresa;
     }
-    public void setServico_id(Long servico_id) {
-        this.servico_id = servico_id;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
     public Status getStatus() {
@@ -89,10 +93,17 @@ public class Agendamento {
         this.observacao = observacao;
     }
 
-    public Long getPreco_id() {
-        return preco_id;
+    public Preco getPreco() {
+        return preco;
     }
-    public void setPreco_id(Long preco_id) {
-        this.preco_id = preco_id;
+    public void setPreco(Preco preco) {
+        this.preco = preco;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 }
