@@ -2,13 +2,16 @@ package com.barberbross.BarberBross.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "clientes")
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_cliente;
+    private Long cliente_id;
 
     @Column(length = 50, nullable = false)
     private String nome;
@@ -22,14 +25,17 @@ public class Cliente {
     @Column(length = 15, nullable = false)
     private String telefone;
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Agendamento> agendamentos = new ArrayList<>();
+
     public Cliente() {
     }
 
-    public Long getId_cliente() {
-        return id_cliente;
+    public Long getCliente_id() {
+        return cliente_id;
     }
-    public void setId_cliente(Long id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setCliente_id(Long cliente_id) {
+        this.cliente_id = cliente_id;
     }
 
     public String getNome() {

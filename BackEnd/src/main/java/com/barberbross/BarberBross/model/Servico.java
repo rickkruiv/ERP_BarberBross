@@ -2,6 +2,9 @@ package com.barberbross.BarberBross.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "servicos")
 public class Servico {
@@ -23,6 +26,9 @@ public class Servico {
 
     @Column(nullable = false)
     private Long preco_id;
+
+    @OneToMany(mappedBy = "servico", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Servico() {
     }

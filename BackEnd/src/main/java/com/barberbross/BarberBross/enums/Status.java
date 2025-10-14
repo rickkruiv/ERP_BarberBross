@@ -4,5 +4,5 @@ public enum Status {
     CONCLUIDO,
     EM_ANDAMENTO,
     PENDENTE,
-    CANCELADO;
+    CANCELADO
 }

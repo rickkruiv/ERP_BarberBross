@@ -4,6 +4,8 @@ import com.barberbross.BarberBross.enums.TipoProd_Serv;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "precos")
@@ -27,6 +29,9 @@ public class Preco {
     private TipoProd_Serv tipo;
 
     private String descricao;
+
+    @OneToMany(mappedBy = "preco", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Preco() {
     }

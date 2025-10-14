@@ -1,21 +1,12 @@
 package com.barberbross.BarberBross.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.barberbross.BarberBross.enums.EstadoCivil;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.*;
 
 @Entity
 @Table(
@@ -54,6 +45,9 @@ public class Funcionario {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "enderecoid", referencedColumnName = "enderecoid")
     private Endereco endereco;
+
+    @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Long getFuncionarioid() { return funcionarioid; }
     public void setFuncionarioid(Long funcionarioid) { this.funcionarioid = funcionarioid; }

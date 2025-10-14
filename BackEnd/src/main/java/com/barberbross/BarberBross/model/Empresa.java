@@ -3,6 +3,9 @@ package com.barberbross.BarberBross.model;
 import com.barberbross.BarberBross.enums.TipoAssinatura;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "empresas")
 public class Empresa {
@@ -32,6 +35,9 @@ public class Empresa {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoAssinatura tipo_assinatura;
+
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Empresa() {
     }
