@@ -16,7 +16,6 @@ public class Produto {
     private String descricao;
 
     @ManyToOne(fetch = FetchType.EAGER)
-
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 

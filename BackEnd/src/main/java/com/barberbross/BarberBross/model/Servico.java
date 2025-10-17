@@ -21,7 +21,8 @@ public class Servico {
     @Column(nullable = false)
     private Integer tempo_estimado;
 
-    @Column(nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
     @Column(nullable = false)
