@@ -16,7 +16,7 @@ public class Produto {
     private String descricao;
 
     @Column(nullable = false)
-    private Long categoria_id;
+    private Categoria categoria;
 
     public Produto() {
     }
@@ -42,11 +42,6 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Long getCategoria_id() {
-        return categoria_id;
-    }
-    public void setCategoria_id(Long categoria_id) {
-        this.categoria_id = categoria_id;
-    }
-
+    public Categoria getCategoria() {return categoria;}
+    public void setCategoria(Categoria categoria) {this.categoria = categoria;}
 }
