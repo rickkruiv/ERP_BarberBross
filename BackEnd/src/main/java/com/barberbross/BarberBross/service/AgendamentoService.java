@@ -1,6 +1,5 @@
 package com.barberbross.BarberBross.service;
 
-import com.barberbross.BarberBross.model.Agenda;
 import com.barberbross.BarberBross.model.Agendamento;
 import com.barberbross.BarberBross.repository.AgendamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ public class AgendamentoService {
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-    public Agendamento fazerAgendamento(Agendamento agendamento){
+    public Agendamento salvarAgendamento(Agendamento agendamento){
         return agendamentoRepository.save(agendamento);
     }
 

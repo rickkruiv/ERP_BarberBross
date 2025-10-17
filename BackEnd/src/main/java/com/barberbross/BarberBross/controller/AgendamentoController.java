@@ -18,9 +18,9 @@ public class AgendamentoController {
     private AgendamentoService agendamentoService;
 
     @PostMapping
-    public ResponseEntity<Agendamento> fazerAgendamento(@RequestBody Agendamento agendamento){
+    public ResponseEntity<Agendamento> salvarAgendamento(@RequestBody Agendamento agendamento){
         return ResponseEntity.status(HttpStatus.CREATED).
-                body(agendamentoService.fazerAgendamento(agendamento));
+                body(agendamentoService.salvarAgendamento(agendamento));
     }
 
     @GetMapping
