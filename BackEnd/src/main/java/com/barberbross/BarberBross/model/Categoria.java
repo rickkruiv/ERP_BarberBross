@@ -3,6 +3,9 @@ package com.barberbross.BarberBross.model;
 import com.barberbross.BarberBross.enums.TipoProd_Serv;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "categorias")
 public class Categoria {
@@ -19,6 +22,9 @@ public class Categoria {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoProd_Serv tipo;
+
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Produto> produtos = new ArrayList<>();
 
     public Categoria() {
     }

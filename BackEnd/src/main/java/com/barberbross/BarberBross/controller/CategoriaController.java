@@ -28,6 +28,11 @@ public class CategoriaController {
         return ResponseEntity.ok(categoriaService.listarCategorias());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Categoria> buscarCategoriaPorId(@PathVariable Long id){
+        return ResponseEntity.ok(categoriaService.buscarCategoriaPorId(id));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Categoria> editarCategoria(@PathVariable Long id, @RequestBody Categoria categoria){
         return ResponseEntity.ok(categoriaService.editarCategoria(id, categoria));
