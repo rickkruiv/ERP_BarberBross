@@ -27,12 +27,6 @@ public class ProdutoController {
         return ResponseEntity.ok(produtoService.listarProdutos());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Produto> buscarProdutoPorId(@PathVariable Long id){
-        return ResponseEntity.ok(produtoService.buscarProdutoPorId(id));
-    }
-
-
     @PutMapping("/{id}")
     public ResponseEntity<Produto> editarProduto(@PathVariable long id, @RequestBody Produto produto){
         return  ResponseEntity.ok(produtoService.editarProduto(id, produto));

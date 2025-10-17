@@ -22,7 +22,7 @@ public class Servico {
     private Integer tempo_estimado;
 
     @Column(nullable = false)
-    private Long categoria_id;
+    private Categoria categoria;
 
     @Column(nullable = false)
     private Long preco_id;
@@ -61,12 +61,8 @@ public class Servico {
         this.tempo_estimado = tempo_estimado;
     }
 
-    public Long getCategoria_id() {
-        return categoria_id;
-    }
-    public void setCategoria_id(Long categoria_id) {
-        this.categoria_id = categoria_id;
-    }
+    public Categoria getCategoria() {return categoria;}
+    public void setCategoria(Categoria categoria) {this.categoria = categoria;}
 
     public Long getPreco_id() {
         return preco_id;
