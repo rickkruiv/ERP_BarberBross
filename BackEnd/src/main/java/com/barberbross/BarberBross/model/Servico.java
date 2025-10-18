@@ -6,73 +6,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "servicos")
+@Table(name = "servico")
 public class Servico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long servico_id;
+    private Long servicoId;
 
-    @Column(nullable = false) //unique?
+    @Column(nullable = false, length = 50) //unique? <- Cepa q sim
     private String nome;
 
+    @Column(nullable = true, length = 100)
     private String descricao;
 
     @Column(nullable = false)
-    private Integer tempo_estimado;
+    private Integer tempoEstimado;
 
     @Column(nullable = false)
-    private Long categoria_id;
+    private Long categoriaId;
 
     @Column(nullable = false)
-    private Long preco_id;
+    private Long precoId;
 
     @OneToMany(mappedBy = "servico", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Agendamento> agendamentos = new ArrayList<>();
 
-    public Servico() {
-    }
+    public Servico() {}
+    
+    public Long getServicoId() { return servicoId; }
+    public void setServicoId(Long servicoId) { this.servicoId = servicoId; }
 
-    public Long getServico_id() {
-        return servico_id;
-    }
-    public void setServico_id(Long servico_id) {
-        this.servico_id = servico_id;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public String getNome() {
-        return nome;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
 
-    public String getDescricao() {
-        return descricao;
-    }
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+    public Integer getTempoEstimado() { return tempoEstimado; }
+    public void setTempoEstimado(Integer tempoEstimado) { this.tempoEstimado = tempoEstimado; }
 
-    public Integer getTempo_estimado() {
-        return tempo_estimado;
-    }
-    public void setTempo_estimado(Integer tempo_estimado) {
-        this.tempo_estimado = tempo_estimado;
-    }
+    public Long getCategoriaId() { return categoriaId; }
+    public void setCategoriaId(Long categoriaId) { this.categoriaId = categoriaId; }
 
-    public Long getCategoria_id() {
-        return categoria_id;
-    }
-    public void setCategoria_id(Long categoria_id) {
-        this.categoria_id = categoria_id;
-    }
-
-    public Long getPreco_id() {
-        return preco_id;
-    }
-    public void setPreco_id(Long preco_id) {
-        this.preco_id = preco_id;
-    }
+    public Long getPrecoId() { return precoId; }
+    public void setPreco_id(Long precoId) { this.precoId = precoId; }
 
 }

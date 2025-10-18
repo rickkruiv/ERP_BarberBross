@@ -1,77 +1,80 @@
-package com.barberbross.BarberBross.model;
+// Revisar essa entidade dps.
 
-import com.barberbross.BarberBross.enums.Disponibilidade;
-import jakarta.persistence.*;
+// package com.barberbross.BarberBross.model;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+// import com.barberbross.BarberBross.enums.Disponibilidade;
+// import jakarta.persistence.*;
 
-@Entity
-@Table(name = "agenda")
-public class Agenda {
+// import java.time.LocalDateTime;
+// import java.time.LocalTime;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long agenda_id;
+// @Entity
+// @Table(name = "agenda")
+// public class Agenda {
 
-    @Column(nullable = false)
-    private Long funcionario_id;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long agenda_id;
 
-    @Column(nullable = false)
-    private LocalDateTime data;
+//     // Aqui vai ser uma agenda geral. Vai se relacionar com o Agendamento. O agendamento tem o funcnionario.
+//     // @Column(nullable = false)
+//     // private Long funcionario_id;
 
-    @Column(nullable = false)
-    private LocalTime hora_inicio; //??? data ja vai ter a hora
+//     @Column(nullable = false)
+//     private LocalDateTime data;
 
-    @Column(nullable = false)
-    private LocalDateTime data_fim; //um nome diferente seria melhor
+//     @Column(nullable = false)
+//     private LocalTime horario; //??? data ja vai ter a hora <- NÃO, faz separado
 
-    @Enumerated(EnumType.STRING)
-    private Disponibilidade disponibilidade;
+//     @Column(nullable = false)
+//     private LocalDateTime data; //um nome diferente seria melhor 
 
-    public Agenda() {
-    }
+//     @Enumerated(EnumType.STRING)
+//     private Disponibilidade disponibilidade;
 
-    public Long getAgenda_id() {
-        return agenda_id;
-    }
-    public void setAgenda_id(Long agenda_id) {
-        this.agenda_id = agenda_id;
-    }
+//     public Agenda() {
+//     }
 
-    public Long getFuncionario_id() {
-        return funcionario_id;
-    }
-    public void setFuncionario_id(Long funcionario_id) {
-        this.funcionario_id = funcionario_id;
-    }
+//     public Long getAgenda_id() {
+//         return agenda_id;
+//     }
+//     public void setAgenda_id(Long agenda_id) {
+//         this.agenda_id = agenda_id;
+//     }
 
-    public LocalDateTime getData() {
-        return data;
-    }
-    public void setData(LocalDateTime data) {
-        this.data = data;
-    }
+//     public Long getFuncionario_id() {
+//         return funcionario_id;
+//     }
+//     public void setFuncionario_id(Long funcionario_id) {
+//         this.funcionario_id = funcionario_id;
+//     }
 
-    public LocalTime getHora_inicio() {
-        return hora_inicio;
-    }
-    public void setHora_inicio(LocalTime hora_inicio) {
-        this.hora_inicio = hora_inicio;
-    }
+//     public LocalDateTime getData() {
+//         return data;
+//     }
+//     public void setData(LocalDateTime data) {
+//         this.data = data;
+//     }
 
-    public LocalDateTime getData_fim() {
-        return data_fim;
-    }
-    public void setData_fim(LocalDateTime data_fim) {
-        this.data_fim = data_fim;
-    }
+//     public LocalTime getHora_inicio() {
+//         return hora_inicio;
+//     }
+//     public void setHora_inicio(LocalTime hora_inicio) {
+//         this.hora_inicio = hora_inicio;
+//     }
 
-    public Disponibilidade getDisponibilidade() {
-        return disponibilidade;
-    }
-    public void setDisponibilidade(Disponibilidade disponibilidade) {
-        this.disponibilidade = disponibilidade;
-    }
+//     public LocalDateTime getData_fim() {
+//         return data_fim;
+//     }
+//     public void setData_fim(LocalDateTime data_fim) {
+//         this.data_fim = data_fim;
+//     }
 
-}
+//     public Disponibilidade getDisponibilidade() {
+//         return disponibilidade;
+//     }
+//     public void setDisponibilidade(Disponibilidade disponibilidade) {
+//         this.disponibilidade = disponibilidade;
+//     }
+
+// }

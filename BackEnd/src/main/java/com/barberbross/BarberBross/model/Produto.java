@@ -3,12 +3,12 @@ package com.barberbross.BarberBross.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "produtos")
+@Table(name = "produto")
 public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long produto_id;
+    private Long produtoId;
 
     @Column(nullable = false)
     private String nome;
@@ -16,37 +16,20 @@ public class Produto {
     private String descricao;
 
     @Column(nullable = false)
-    private Long categoria_id;
+    private Long categoriaId;
 
-    public Produto() {
-    }
+    public Produto() {}
+    
+    public Long getProdutoId() { return produtoId; }
+    public void setProdutoId(Long produtoId) { this.produtoId = produtoId; }
 
-    public Long getProduto_id() {
-        return produto_id;
-    }
-    public void setProduto_id(Long produto_id) {
-        this.produto_id = produto_id;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public String getNome() {
-        return nome;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
 
-    public String getDescricao() {
-        return descricao;
-    }
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Long getCategoria_id() {
-        return categoria_id;
-    }
-    public void setCategoria_id(Long categoria_id) {
-        this.categoria_id = categoria_id;
-    }
+    public Long getCategoriaId() { return categoriaId; }
+    public void setCategoriaId(Long categoriaId) { this.categoriaId = categoriaId; }
 
 }
