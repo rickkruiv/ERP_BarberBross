@@ -14,7 +14,7 @@ public class AgendamentoService {
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-    public Agendamento fazerAgendamento(Agendamento agendamento){
+    public Agendamento salvarAgendamento(Agendamento agendamento){
         return agendamentoRepository.save(agendamento);
     }
 

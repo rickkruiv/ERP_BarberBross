@@ -3,6 +3,9 @@ package com.barberbross.BarberBross.model;
 import com.barberbross.BarberBross.enums.TipoProdServ;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "categoria")
 public class Categoria {
@@ -20,6 +23,9 @@ public class Categoria {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoProdServ tipo;
+
+    @Column(nullable = false, unique = false)
+    private Long ProdServId;
 
     public Categoria() {}
     
