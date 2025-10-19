@@ -24,8 +24,8 @@ public class Categoria {
     @Column(nullable = false)
     private TipoProdServ tipo;
 
-    @Column(nullable = false, unique = false)
-    private Long ProdServId;
+    //@Column(nullable = false, unique = false)
+    //private Long ProdServId; q isso?
 
     public Categoria() {}
     

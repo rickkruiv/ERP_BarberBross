@@ -32,7 +32,7 @@ public class ProdutoService {
 
         produtoEditado.setNome(produto.getNome());
         produtoEditado.setDescricao(produto.getDescricao());
-        produtoEditado.setCategoria(produto.getCategoria());
+        produtoEditado.setCategoriaId(produto.getCategoriaId());
 
         return produtoRepository.save(produtoEditado);
     }

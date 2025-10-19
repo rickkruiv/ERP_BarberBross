@@ -13,19 +13,14 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Cliente salvarCliente(Cliente novoCliente){
-        return clienteRepository.save(novoCliente);
-    }
+    public Cliente salvarCliente(Cliente novoCliente){ return clienteRepository.save(novoCliente);}
 
-    public List<Cliente> listarClientes(){
-        return clienteRepository.findAll();
-    }
+    public List<Cliente> listarClientes(){ return clienteRepository.findAll();}
 
     public Cliente buscarClientePorId(Long id){
         return clienteRepository.findById(id).
                 orElseThrow(() -> new RuntimeException("Cliente não encontrado com o id: " + id));
     }
-
 
     public Cliente editarCliente(Long id, Cliente cliente){
         Cliente clienteEditado = buscarClientePorId(id);

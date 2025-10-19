@@ -20,7 +20,7 @@ public class Empresa {
     @Column(nullable = false)
     private String nomeFantasia;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = true, unique = true)
     private Long enderecoId;
 
     @Column(nullable = false, unique = true, length = 18)
