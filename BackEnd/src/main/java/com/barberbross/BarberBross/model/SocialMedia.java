@@ -8,36 +8,24 @@ public class SocialMedia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long social_media_id;
+    private Long socialMediaId;
 
     @Column(nullable = false)
     private String url;
 
     @Column(nullable = false)
-    private Long empresa_id;
+    private Long empresaId;
 
     public SocialMedia() {
     }
 
-    public Long getSocial_media_id() {
-        return social_media_id;
-    }
-    public void setSocial_media_id(Long social_media_id) {
-        this.social_media_id = social_media_id;
-    }
+    public Long getSocialMediaId() { return socialMediaId; }
+    public void setSocialMediaId(Long socialMediaId) { this.socialMediaId = socialMediaId; }
 
-    public String getUrl() {
-        return url;
-    }
-    public void setUrl(String url) {
-        this.url = url;
-    }
+    public String getUrl() { return url; }
+    public void setUrl(String url) { this.url = url; }
 
-    public Long getEmpresa_id() {
-        return empresa_id;
-    }
-    public void setEmpresa_id(Long empresa_id) {
-        this.empresa_id = empresa_id;
-    }
+    public Long getEmpresaId() { return empresaId; }
+    public void setEmpresaId(Long empresaId) { this.empresaId = empresaId; }
 
 }

@@ -18,22 +18,22 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @PostMapping
-    public ResponseEntity<Produto> salvarProduto(@RequestBody Produto novoProduto){
+    public ResponseEntity<Produto> salvarProduto(@RequestBody Produto novoProduto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoService.salvarProduto(novoProduto));
     }
 
     @GetMapping
-    public ResponseEntity<List<Produto>> listarProdutos(){
+    public ResponseEntity<List<Produto>> listarProdutos() {
         return ResponseEntity.ok(produtoService.listarProdutos());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Produto> editarProduto(@PathVariable long id, @RequestBody Produto produto){
+    public ResponseEntity<Produto> editarProduto(@PathVariable long id, @RequestBody Produto produto) {
         return  ResponseEntity.ok(produtoService.editarProduto(id, produto));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deletarProduto(@PathVariable Long id){
+    public ResponseEntity<HttpStatus> deletarProduto(@PathVariable Long id) {
         produtoService.deletarProduto(id);
         return ResponseEntity.noContent().build();
     }

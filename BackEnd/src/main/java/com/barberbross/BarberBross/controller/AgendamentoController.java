@@ -18,22 +18,19 @@ public class AgendamentoController {
     private AgendamentoService agendamentoService;
 
     @PostMapping
-    public ResponseEntity<Agendamento> salvarAgendamento(@RequestBody Agendamento agendamento){
+    public ResponseEntity<Agendamento> salvarAgendamento(@RequestBody Agendamento agendamento) {
         return ResponseEntity.status(HttpStatus.CREATED).
                 body(agendamentoService.salvarAgendamento(agendamento));
     }
 
     @GetMapping
-    public ResponseEntity<List<Agendamento>> listarAgendamentos(){
+    public ResponseEntity<List<Agendamento>> listarAgendamentos() {
         return ResponseEntity.ok(agendamentoService.listarAgendamentos());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deletarAgendamento(@PathVariable Long id){
+    public ResponseEntity<HttpStatus> deletarAgendamento(@PathVariable Long id) {
         agendamentoService.deletarAgendamento(id);
         return ResponseEntity.noContent().build();
     }
-
-
-
 }

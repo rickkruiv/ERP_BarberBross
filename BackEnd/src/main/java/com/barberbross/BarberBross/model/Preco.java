@@ -1,6 +1,6 @@
 package com.barberbross.BarberBross.model;
 
-import com.barberbross.BarberBross.enums.TipoProd_Serv;
+import com.barberbross.BarberBross.enums.TipoProdServ;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -13,20 +13,20 @@ public class Preco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long preco_id;
+    private Long precoId;
 
     @Column(nullable = false)
-    private LocalDateTime data_inicio;
+    private LocalDateTime dataInicio;
 
     @Column(nullable = false)
-    private LocalDateTime data_fim;
+    private LocalDateTime dataFim;
 
     @Column(nullable = false)
     private double valor;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private TipoProd_Serv tipo;
+    private TipoProdServ tipo;
 
     private String descricao;
 
@@ -36,46 +36,22 @@ public class Preco {
     public Preco() {
     }
 
-    public Long getPreco_id() {
-        return preco_id;
-    }
-    public void setPreco_id(Long preco_id) {
-        this.preco_id = preco_id;
-    }
+    public Long getPrecoId() { return precoId; }
+    public void setPrecoId(Long precoId) { this.precoId = precoId; }
 
-    public LocalDateTime getData_inicio() {
-        return data_inicio;
-    }
-    public void setData_inicio(LocalDateTime data_inicio) {
-        this.data_inicio = data_inicio;
-    }
+    public LocalDateTime getDataInicio() { return dataInicio; }
+    public void setDataInicio(LocalDateTime dataInicio) { this.dataInicio = dataInicio; }
 
-    public LocalDateTime getData_fim() {
-        return data_fim;
-    }
-    public void setData_fim(LocalDateTime data_fim) {
-        this.data_fim = data_fim;
-    }
+    public LocalDateTime getDataFim() { return dataFim; }
+    public void setDataFim(LocalDateTime dataFim) { this.dataFim = dataFim; }
 
-    public double getValor() {
-        return valor;
-    }
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
+    public double getValor() { return valor; }
+    public void setValor(double valor) { this.valor = valor; }
 
-    public TipoProd_Serv getTipo_preco() {
-        return tipo;
-    }
-    public void setTipo_preco(TipoProd_Serv tipo) {
-        this.tipo = tipo;
-    }
+    public TipoProdServ getTipo() { return tipo; }
+    public void setTipo(TipoProdServ tipo) { this.tipo = tipo; }
 
-    public String getDescricao() {
-        return descricao;
-    }
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
 
 }

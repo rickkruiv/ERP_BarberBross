@@ -18,22 +18,22 @@ public class ClienteController {
     private ClienteService clienteService;
     
     @PostMapping
-    public ResponseEntity<Cliente> salvarCliente(@RequestBody Cliente novoCliente){
+    public ResponseEntity<Cliente> salvarCliente(@RequestBody Cliente novoCliente) {
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteService.salvarCliente(novoCliente));
     }
 
     @GetMapping
-    public ResponseEntity<List<Cliente>> listarClientes(){
+    public ResponseEntity<List<Cliente>> listarClientes() {
         return ResponseEntity.ok(clienteService.listarClientes());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> editarCliente(@PathVariable Long id, @RequestBody Cliente cliente){
+    public ResponseEntity<Cliente> editarCliente(@PathVariable Long id, @RequestBody Cliente cliente) {
         return  ResponseEntity.ok(clienteService.editarCliente(id, cliente));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deletarCliente(@PathVariable Long id){
+    public ResponseEntity<HttpStatus> deletarCliente(@PathVariable Long id) {
         clienteService.deletarCliente(id);
         return ResponseEntity.noContent().build();
     }

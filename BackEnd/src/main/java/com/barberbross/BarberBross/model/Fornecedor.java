@@ -8,7 +8,7 @@ public class Fornecedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long fornecedor_id;
+    private Long fornecedorId;
 
     @Column(nullable = false)
     private String nome;
@@ -23,51 +23,26 @@ public class Fornecedor {
     private String email;
 
     @Column(nullable = false)
-    private Long endereco_id;
+    private Long enderecoId;
 
-    public Fornecedor() {
-    }
+    public Fornecedor() {}
 
-    public Long getFornecedor_id() {
-        return fornecedor_id;
-    }
-    public void setFornecedor_id(Long fornecedor_id) {
-        this.fornecedor_id = fornecedor_id;
-    }
+    public Long getFornecedorId() { return fornecedorId; }
+    public void setFornecedorId(Long fornecedorId) { this.fornecedorId = fornecedorId; }
 
-    public String getNome() {
-        return nome;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public String getCnpj() {
-        return cnpj;
-    }
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
+    public String getCnpj() { return cnpj; }
+    public void setCnpj(String cnpj) { this.cnpj = cnpj; }
 
-    public String getTelefone() {
-        return telefone;
-    }
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+    public String getTelefone() { return telefone; }
+    public void setTelefone(String telefone) { this.telefone = telefone; }
 
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public Long getEndereco_id() {
-        return endereco_id;
-    }
-    public void setEndereco_id(Long endereco_id) {
-        this.endereco_id = endereco_id;
-    }
+    public Long getEnderecoId() { return enderecoId; }
+    public void setEnderecoId(Long enderecoId) { this.enderecoId = enderecoId; }
 
 }
