@@ -13,9 +13,9 @@ public class EmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    public Empresa salvarEmpresa(Empresa novaEmpresa){ return empresaRepository.save(novaEmpresa);}
+    public Empresa salvarEmpresa(Empresa novaEmpresa){return empresaRepository.save(novaEmpresa);}
 
-    public List<Empresa> listarEmpresas(){ return empresaRepository.findAll();}
+    public List<Empresa> listarEmpresas(){return empresaRepository.findAll();}
 
     public Empresa buscarEmpresaPorId(Long id){
         return empresaRepository.findById(id).

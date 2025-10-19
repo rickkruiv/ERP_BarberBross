@@ -19,7 +19,7 @@ public class Endereco {
     private String bairro;
     private String cidade;
     private String uf;
-    private int    numero;
+    private int numero;
     
     public Long getEnderecoid() { return enderecoid; }
     public void setEnderecoid( Long enderecoid ) { this.enderecoid = enderecoid; }
