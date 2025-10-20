@@ -1,18 +1,17 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { HashRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import App from "./App.jsx";
+import React from "react"
+import { createRoot } from "react-dom/client"
+import { CssBaseline, ThemeProvider } from "@mui/material"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import App from "./App"
+import theme from "./theme"
+import "./styles.css"
 
-
-const qc = new QueryClient();
-const root = createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById("root"))
 root.render(
-<React.StrictMode>
-    <QueryClientProvider client={qc}>
-        <HashRouter>
-            <App />
-        </HashRouter>
-    </QueryClientProvider>
-</React.StrictMode>
-);
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <App />
+    <ToastContainer position="bottom-left" theme="dark" />
+  </ThemeProvider>
+)
