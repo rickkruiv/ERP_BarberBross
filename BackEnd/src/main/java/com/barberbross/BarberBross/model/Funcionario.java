@@ -20,7 +20,7 @@ public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long funcionarioid;
+    private Long funcionarioId;
 
     @Column(length = 50, nullable = false)
     private String nome;
@@ -49,8 +49,8 @@ public class Funcionario {
     @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Agendamento> agendamentos = new ArrayList<>();
 
-    public Long getFuncionarioid() { return funcionarioid; }
-    public void setFuncionarioid(Long funcionarioid) { this.funcionarioid = funcionarioid; }
+    public Long getFuncionarioId() { return funcionarioId; }
+    public void setFuncionarioId(Long funcionarioId) { this.funcionarioId = funcionarioId; }
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
