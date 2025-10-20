@@ -14,13 +14,12 @@ import jakarta.persistence.*;
     uniqueConstraints  = {
         @UniqueConstraint(columnNames = {"cpf"}), 
         @UniqueConstraint(columnNames = {"rg"})
-    }
-    )
+    })
 public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long funcionarioid;
+    private Long funcionarioId;
 
     @Column(length = 50, nullable = false)
     private String nome;
@@ -43,14 +42,22 @@ public class Funcionario {
     private EstadoCivil estadoCivil;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "enderecoid", referencedColumnName = "enderecoid")
+    @JoinColumn(name = "enderecoId", referencedColumnName = "enderecoId")
     private Endereco endereco;
 
     @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Agendamento> agendamentos = new ArrayList<>();
 
-    public Long getFuncionarioid() { return funcionarioid; }
-    public void setFuncionarioid(Long funcionarioid) { this.funcionarioid = funcionarioid; }
+    @ManyToMany
+    @JoinTable(
+        name               = "funcBeneficio",
+        joinColumns        = @JoinColumn(name = "funcionarioID"),
+        inverseJoinColumns = @JoinColumn(name = "beneficioId")
+    )
+    private List<Beneficio> beneficios;
+
+    public Long getFuncionarioId() { return funcionarioId; }
+    public void setFuncionarioId(Long funcionarioId) { this.funcionarioId = funcionarioId; }
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
@@ -75,4 +82,10 @@ public class Funcionario {
 
     public Endereco getEndereco() { return endereco; }
     public void setEndereco(Endereco endereco) { this.endereco = endereco; }
+
+    public List<Agendamento> getAgendamentos() { return agendamentos; }
+    public void setAgendamentos(List<Agendamento> agendamentos) { this.agendamentos = agendamentos; }
+
+    public List<Beneficio> getBeneficios() { return beneficios; }
+    public void setBeneficios(List<Beneficio> beneficios) { this.beneficios = beneficios; }    
 }

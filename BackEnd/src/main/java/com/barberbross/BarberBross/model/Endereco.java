@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long enderecoid;
+    private Long enderecoId;
 
     private String cep;
     private String logradouro;
@@ -21,8 +21,8 @@ public class Endereco {
     private String uf;
     private int    numero;
     
-    public Long getEnderecoid() { return enderecoid; }
-    public void setEnderecoid( Long enderecoid ) { this.enderecoid = enderecoid; }
+    public Long getEnderecoId() { return enderecoId; }
+    public void setEnderecoId( Long enderecoId ) { this.enderecoId = enderecoId; }
 
     public String getCep() { return cep; }
     public void setCep(String cep) { this.cep = cep; }
