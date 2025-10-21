@@ -35,10 +35,10 @@ public class Usuario {
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
 
-    public Long getFuncionario_id() { return funcionarioId; }
-    public void setFuncionario_id(Long funcionarioId) { this.funcionarioId = funcionarioId; }
+    public Long getFuncionarioId() { return funcionarioId; }
+    public void setFuncionarioId(Long funcionarioId) { this.funcionarioId = funcionarioId; }
 
-    public NivelAcesso getNivel_acesso() { return nivelAcesso; }
+    public NivelAcesso getNivelAcesso() { return nivelAcesso; }
     public void setNivelAcesso(NivelAcesso nivelAcesso) { this.nivelAcesso = nivelAcesso; }
 
 }
