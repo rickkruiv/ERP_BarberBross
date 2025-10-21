@@ -33,7 +33,7 @@ public class Avaliacao {
     public Avaliacao() {}
     
     public Long getAvaliacaoId() { return avaliacaoId; }
-    public void setAvaliacao_id(Long avaliacaoId) { this.avaliacaoId = avaliacaoId; }
+    public void setAvaliacaoId(Long avaliacaoId) { this.avaliacaoId = avaliacaoId; }
 
     public Long getClienteId() { return clienteId; }
     public void setClienteId(Long clienteId) { this.clienteId = clienteId; }
