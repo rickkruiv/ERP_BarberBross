@@ -13,21 +13,21 @@ public class AgendamentoService {
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-    public Agendamento salvarAgendamento(Agendamento agendamento){
+    public Agendamento salvarAgendamento(Agendamento agendamento) {
         return agendamentoRepository.save(agendamento);
     }
 
-    public List<Agendamento> listarAgendamentos(){
+    public List<Agendamento> listarAgendamentos() {
         return agendamentoRepository.findAll();
     }
 
-    public Agendamento buscarAgendamentoPorId(Long id){
-        Agendamento agendamentoEncontrado = agendamentoRepository.findById(id).
-                orElseThrow(() -> new RuntimeException("Nenhum agendamento encontrado com o id: " + id));
+    public Agendamento buscarAgendamentoPorId(Long id) {
+        Agendamento agendamentoEncontrado = agendamentoRepository.findById(id)
+                                                                 .orElseThrow(() -> new RuntimeException("Nenhum agendamento encontrado com o id: " + id));
         return agendamentoEncontrado;
     }
 
-    public void deletarAgendamento(Long id){
+    public void deletarAgendamento(Long id) {
         Agendamento agendamentoEncontrado = buscarAgendamentoPorId(id);
         agendamentoRepository.delete(agendamentoEncontrado);
     }

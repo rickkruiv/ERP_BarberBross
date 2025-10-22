@@ -12,66 +12,41 @@ public class Agenda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long agenda_id;
+    private Long agendaId;
 
     @Column(nullable = false)
-    private Long funcionario_id;
+    private Long funcionarioId;
 
     @Column(nullable = false)
     private LocalDateTime data;
 
     @Column(nullable = false)
-    private LocalTime hora_inicio; //??? data ja vai ter a hora
+    private LocalTime horaInicio; //??? data ja vai ter a hora
 
     @Column(nullable = false)
-    private LocalDateTime data_fim; //um nome diferente seria melhor
+    private LocalDateTime dataFim; //um nome diferente seria melhor
 
     @Enumerated(EnumType.STRING)
     private Disponibilidade disponibilidade;
 
-    public Agenda() {
-    }
+    public Agenda() {}
 
-    public Long getAgenda_id() {
-        return agenda_id;
-    }
-    public void setAgenda_id(Long agenda_id) {
-        this.agenda_id = agenda_id;
-    }
+    public Long getAgendaId() { return agendaId; }
+    public void setAgendaId(Long agendaId) { this.agendaId = agendaId; }
 
-    public Long getFuncionario_id() {
-        return funcionario_id;
-    }
-    public void setFuncionario_id(Long funcionario_id) {
-        this.funcionario_id = funcionario_id;
-    }
+    public Long getFuncionarioId() { return funcionarioId; }
+    public void setFuncionarioId(Long funcionarioId) { this.funcionarioId = funcionarioId; }
 
-    public LocalDateTime getData() {
-        return data;
-    }
-    public void setData(LocalDateTime data) {
-        this.data = data;
-    }
+    public LocalDateTime getData() { return data; }
+    public void setData(LocalDateTime data) { this.data = data; }
 
-    public LocalTime getHora_inicio() {
-        return hora_inicio;
-    }
-    public void setHora_inicio(LocalTime hora_inicio) {
-        this.hora_inicio = hora_inicio;
-    }
+    public LocalTime getHoraInicio() { return horaInicio; }
+    public void setHora_inicio(LocalTime horaInicio) { this.horaInicio = horaInicio; }
 
-    public LocalDateTime getData_fim() {
-        return data_fim;
-    }
-    public void setData_fim(LocalDateTime data_fim) {
-        this.data_fim = data_fim;
-    }
+    public LocalDateTime getDataFim() { return dataFim; }
+    public void setDataFim(LocalDateTime dataFim) { this.dataFim = dataFim; }
 
-    public Disponibilidade getDisponibilidade() {
-        return disponibilidade;
-    }
-    public void setDisponibilidade(Disponibilidade disponibilidade) {
-        this.disponibilidade = disponibilidade;
-    }
+    public Disponibilidade getDisponibilidade() { return disponibilidade; }
+    public void setDisponibilidade(Disponibilidade disponibilidade) { this.disponibilidade = disponibilidade; }
 
 }

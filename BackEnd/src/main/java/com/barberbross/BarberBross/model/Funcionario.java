@@ -48,6 +48,7 @@ public class Funcionario {
     @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Agendamento> agendamentos = new ArrayList<>();
 
+<<<<<<< HEAD
     @ManyToMany
     @JoinTable(
         name               = "funcBeneficio",
@@ -56,6 +57,8 @@ public class Funcionario {
     )
     private List<Beneficio> beneficios;
 
+=======
+>>>>>>> 631c29b9aebe7f7c14ff96c9eb33bc0cba16f7e2
     public Long getFuncionarioId() { return funcionarioId; }
     public void setFuncionarioId(Long funcionarioId) { this.funcionarioId = funcionarioId; }
 

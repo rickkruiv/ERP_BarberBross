@@ -1,6 +1,6 @@
 package com.barberbross.BarberBross.enums;
 
-public enum TipoProd_Serv {
+public enum TipoProdServ {
     PRODUTO,
     SERVICO
 }

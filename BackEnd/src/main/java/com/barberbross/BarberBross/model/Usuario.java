@@ -9,7 +9,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long usuario_id;
+    public Long usuarioId;
 
     @Column(nullable = false, length = 20, unique = true)
     public String username;
@@ -18,48 +18,27 @@ public class Usuario {
     public String senha;
 
     @Column(nullable = false)
-    public Long funcionario_id;
+    public Long funcionarioId;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    public NivelAcesso nivel_acesso;
+    public NivelAcesso nivelAcesso;
 
-    public Usuario() {
-    }
+    public Usuario() {}
 
-    public Long getUsuario_id() {
-        return usuario_id;
-    }
-    public void setUsuario_id(Long usuario_id) {
-        this.usuario_id = usuario_id;
-    }
+    public Long getUsuarioId() { return usuarioId; }
+    public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
 
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
 
-    public String getSenha() {
-        return senha;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
 
-    public Long getFuncionario_id() {
-        return funcionario_id;
-    }
-    public void setFuncionario_id(Long funcionario_id) {
-        this.funcionario_id = funcionario_id;
-    }
+    public Long getFuncionarioId() { return funcionarioId; }
+    public void setFuncionarioId(Long funcionarioId) { this.funcionarioId = funcionarioId; }
 
-    public NivelAcesso getNivel_acesso() {
-        return nivel_acesso;
-    }
-    public void setNivel_acesso(NivelAcesso nivel_acesso) {
-        this.nivel_acesso = nivel_acesso;
-    }
+    public NivelAcesso getNivelAcesso() { return nivelAcesso; }
+    public void setNivelAcesso(NivelAcesso nivelAcesso) { this.nivelAcesso = nivelAcesso; }
 
 }

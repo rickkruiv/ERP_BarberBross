@@ -13,67 +13,42 @@ public class Pagamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pagamento_id;
+    private Long pagamentoId;
 
     @Column(nullable = false)
-    private Long agendamento_id;
+    private Long agendamentoId;
 
     @Column(nullable = false)
     private double valor;
 
     @Column(nullable = false)
-    private LocalDateTime data_pgmto;
+    private LocalDateTime dataPagamento;
 
     @Column(nullable = false)
-    private FormaPagamento form_pgmto;
+    private FormaPagamento formaPagamento;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Status status;
 
-    public Pagamento() {
-    }
+    public Pagamento() {}
 
-    public Long getPagamento_id() {
-        return pagamento_id;
-    }
-    public void setPagamento_id(Long pagamento_id) {
-        this.pagamento_id = pagamento_id;
-    }
+    public Long getPagamentoId() { return pagamentoId; }
+    public void setPagamentoId(Long pagamentoId) { this.pagamentoId = pagamentoId; }
 
-    public Long getAgendamento_id() {
-        return agendamento_id;
-    }
-    public void setAgendamento_id(Long agendamento_id) {
-        this.agendamento_id = agendamento_id;
-    }
+    public Long getAgendamentoId() { return agendamentoId; }
+    public void setAgendamentoId(Long agendamentoId) { this.agendamentoId = agendamentoId; }
 
-    public double getValor() {
-        return valor;
-    }
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
+    public double getValor() { return valor; }
+    public void setValor(double valor) { this.valor = valor; }
 
-    public LocalDateTime getData_pgmto() {
-        return data_pgmto;
-    }
-    public void setData_pgmto(LocalDateTime data_pgmto) {
-        this.data_pgmto = data_pgmto;
-    }
+    public LocalDateTime getDataPagamento() { return dataPagamento; }
+    public void setDataPagamento(LocalDateTime dataPagamento) { this.dataPagamento = dataPagamento; }
 
-    public FormaPagamento getForm_pgmto() {
-        return form_pgmto;
-    }
-    public void setForm_pgmto(FormaPagamento form_pgmto) {
-        this.form_pgmto = form_pgmto;
-    }
+    public FormaPagamento getFormaPagamento() { return formaPagamento; }
+    public void setFormaPagamento(FormaPagamento formaPagamento) { this.formaPagamento = formaPagamento; }
 
-    public Status getStatus() {
-        return status;
-    }
-    public void setStatus(Status status) {
-        this.status = status;
-    }
+    public Status getStatus() { return status; }
+    public void setStatus(Status status) { this.status = status; }
 
 }
