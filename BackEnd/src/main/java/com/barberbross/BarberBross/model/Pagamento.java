@@ -15,7 +15,7 @@ public class Pagamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long pagamentoId;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Long agendamentoId;
 
     @Column(nullable = false)
@@ -32,9 +32,9 @@ public class Pagamento {
     private Status status;
 
     public Pagamento() {}
-    
+
     public Long getPagamentoId() { return pagamentoId; }
-    public void setpagamentoId(Long pagamentoId) { this.pagamentoId = pagamentoId; }
+    public void setPagamentoId(Long pagamentoId) { this.pagamentoId = pagamentoId; }
 
     public Long getAgendamentoId() { return agendamentoId; }
     public void setAgendamentoId(Long agendamentoId) { this.agendamentoId = agendamentoId; }
@@ -43,12 +43,11 @@ public class Pagamento {
     public void setValor(double valor) { this.valor = valor; }
 
     public LocalDateTime getDataPagamento() { return dataPagamento; }
-    public void seDataPagamento(LocalDateTime dataPagamento) { this.dataPagamento = dataPagamento; }
+    public void setDataPagamento(LocalDateTime dataPagamento) { this.dataPagamento = dataPagamento; }
 
     public FormaPagamento getFormaPagamento() { return formaPagamento; }
     public void setFormaPagamento(FormaPagamento formaPagamento) { this.formaPagamento = formaPagamento; }
 
     public Status getStatus() { return status; }
     public void setStatus(Status status) { this.status = status; }
-
 }
