@@ -1,8 +1,5 @@
 import React from "react"
-import {
-  Box, Grid, Typography, TextField, MenuItem, ToggleButtonGroup, ToggleButton, Chip,
-  Card, InputAdornment, IconButton
-} from "@mui/material"
+import { Box, Grid, Typography, TextField, MenuItem, ToggleButtonGroup, ToggleButton, Chip, Card, InputAdornment, IconButton, Collapse } from "@mui/material"
 import PersonOutline from "@mui/icons-material/PersonOutline"
 import WorkOutline from "@mui/icons-material/WorkOutline"
 import PaidOutlined from "@mui/icons-material/PaidOutlined"
@@ -138,13 +135,41 @@ export default function EmployeesCreate() {
                         {departamentos.map(d => <MenuItem key={d} value={d}>{d}</MenuItem>)}
                       </TextField>
                     </Grid>
-                    <Grid item xs={12}>
-                      <ToggleButtonGroup exclusive value={values.regime} onChange={(_, v) => v && setFieldValue("regime", v)}>
-                        <ToggleButton value="CLT"><Box sx={{ textAlign: "left" }}><Typography sx={{ fontWeight: 800 }}>CLT</Typography><Typography variant="caption">Consolidação das Leis do Trabalho</Typography></Box></ToggleButton>
-                        <ToggleButton value="ESTAGIO"><Box sx={{ textAlign: "left" }}><Typography sx={{ fontWeight: 800 }}>Estágio</Typography><Typography variant="caption">Contrato de estágio</Typography></Box></ToggleButton>
-                        <ToggleButton value="PJ"><Box sx={{ textAlign: "left" }}><Typography sx={{ fontWeight: 800 }}>PJ</Typography><Typography variant="caption">Pessoa Jurídica</Typography></Box></ToggleButton>
-                      </ToggleButtonGroup>
-                    </Grid>
+                      <Grid item xs={12}>
+                        <ToggleButtonGroup
+                          exclusive
+                          fullWidth
+                          value={values.regime}
+                          onChange={(_, v) => v && setFieldValue("regime", v)}
+                        >
+                          <ToggleButton value="CLT">
+                            <Box sx={{ textAlign: "left" }}>
+                              <Typography>CLT</Typography>
+                              <Collapse in={values.regime === "CLT"} timeout="auto" unmountOnExit>
+                                <Typography variant="caption">Consolidação das Leis do Trabalho</Typography>
+                              </Collapse>
+                            </Box>
+                          </ToggleButton>
+
+                          <ToggleButton value="ESTAGIO">
+                            <Box sx={{ textAlign: "left" }}>
+                              <Typography>Estágio</Typography>
+                              <Collapse in={values.regime === "ESTAGIO"} timeout="auto" unmountOnExit>
+                                <Typography variant="caption">Contrato de estágio</Typography>
+                              </Collapse>
+                            </Box>
+                          </ToggleButton>
+
+                          <ToggleButton value="PJ">
+                            <Box sx={{ textAlign: "left" }}>
+                              <Typography>PJ</Typography>
+                              <Collapse in={values.regime === "PJ"} timeout="auto" unmountOnExit>
+                                <Typography variant="caption">Pessoa Jurídica</Typography>
+                              </Collapse>
+                            </Box>
+                          </ToggleButton>
+                        </ToggleButtonGroup>
+                      </Grid>
                     <Grid item xs={12} md={6}>
                       <DateField label="Data de Admissão" name="admissao" value={values.admissao} onChange={handleChange} onBlur={handleBlur} withAttach />
                     </Grid>

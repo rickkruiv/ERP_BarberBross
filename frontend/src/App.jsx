@@ -1,18 +1,19 @@
 import React from "react"
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import DashboardLayout from "./layouts/DashboardLayout"
 import EmployeesCreate from "./pages/employees/EmployeesCreate"
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <DashboardLayout />,
-    children: [
-      { path: "/funcionarios/cadastrar", element: <EmployeesCreate /> }
-    ]
-  }
-])
+import EmployeesList from "./pages/employees/EmployeesList"
 
 export default function App() {
-  return <RouterProvider router={router} />
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<DashboardLayout />}>
+          <Route index element={<Navigate to="/funcionarios/visualizar" replace />} />
+          <Route path="/funcionarios/cadastrar" element={<EmployeesCreate />} />
+          <Route path="/funcionarios/visualizar" element={<EmployeesList />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }

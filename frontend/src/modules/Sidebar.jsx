@@ -1,5 +1,6 @@
 import React from "react"
-import { Drawer, Toolbar, Box, Typography, List, ListItemButton, ListItemIcon, ListItemText, Collapse } from "@mui/material"
+import { styled } from "@mui/material/styles"
+import { Drawer, Toolbar, Box, Typography, List, ListItemButton, ListItemIcon, ListItemText, Collapse, useMediaQuery } from "@mui/material"
 import DashboardIcon from "@mui/icons-material/Dashboard"
 import PeopleIcon from "@mui/icons-material/People"
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline"
@@ -10,14 +11,37 @@ import EventAvailableIcon from "@mui/icons-material/EventAvailable"
 import SettingsIcon from "@mui/icons-material/Settings"
 import { NavLink } from "react-router-dom"
 
-const w = 260
+export const drawerWidth = 260
+export const miniWidth = 72
 
-function Group({ icon, label, children }) {
-  const [open, setOpen] = React.useState(label === "Funcionários")
+const openedMixin = theme => ({
+  width: drawerWidth,
+  transition: theme.transitions.create("width", { duration: theme.transitions.duration.shorter }),
+  overflowX: "hidden",
+  borderRight: "1px solid #1E2733",
+  backgroundColor: theme.palette.background.default
+})
+const closedMixin = theme => ({
+  width: miniWidth,
+  transition: theme.transitions.create("width", { duration: theme.transitions.duration.shorter }),
+  overflowX: "hidden",
+  borderRight: "1px solid #1E2733",
+  backgroundColor: theme.palette.background.default
+})
+
+const DrawerStyled = styled(Drawer, { shouldForwardProp: prop => prop !== "open" && prop !== "mobile" })(({ theme, open, mobile }) => ({
+  width: open ? drawerWidth : miniWidth,
+  flexShrink: 0,
+  whiteSpace: "nowrap",
+  "& .MuiDrawer-paper": mobile ? openedMixin(theme) : open ? openedMixin(theme) : closedMixin(theme)
+}))
+
+function Group({ icon, label, children, defaultOpen }) {
+  const [open, setOpen] = React.useState(!!defaultOpen)
   return (
     <>
       <ListItemButton onClick={() => setOpen(o => !o)}>
-        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemIcon sx={{ minWidth: 40 }}>{icon}</ListItemIcon>
         <ListItemText primary={label} />
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
@@ -27,44 +51,58 @@ function Group({ icon, label, children }) {
   )
 }
 
-export default function Sidebar({ open }) {
+export default function Sidebar({ open, onToggle, mobile }) {
+  const isMobile = useMediaQuery("(max-width:900px)")
+  const variant = isMobile ? "temporary" : "permanent"
   return (
-    <Drawer variant="persistent" open={open} sx={{ width: w, flexShrink: 0, "& .MuiDrawer-paper": { width: w, boxSizing: "border-box", borderRight: "1px solid #1E2733", bgcolor: "background.default" } }}>
+    <DrawerStyled
+      variant={variant}
+      open={isMobile ? open : true}
+      onClose={onToggle}
+      mobile={isMobile}
+      sx={{ display: { xs: "block" } }}
+    >
       <Toolbar sx={{ gap: 1, borderBottom: "1px solid #1E2733" }}>
         <Box sx={{ width: 36, height: 36, borderRadius: 1.5, bgcolor: "#161D27", display: "grid", placeItems: "center", fontWeight: 900 }}>BB</Box>
-        <Box>
+        <Box sx={{ display: { xs: "block", md: open ? "block" : "none" } }}>
           <Typography variant="subtitle1" fontWeight={800}>BarberBross</Typography>
           <Typography variant="caption" color="text.secondary">Sistema ERP</Typography>
         </Box>
       </Toolbar>
-      <List>
-        <ListItemButton>
-          <ListItemIcon><DashboardIcon /></ListItemIcon>
+
+      <List sx={{ "& .MuiListItemText-root": { opacity: { md: open ? 1 : 0, xs: 1 }, transition: "opacity .2s" } }}>
+        <ListItemButton component={NavLink} to="/">
+          <ListItemIcon sx={{ minWidth: 40 }}><DashboardIcon /></ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItemButton>
-        <Group icon={<PeopleIcon />} label="Funcionários">
+
+        <Group icon={<PeopleIcon />} label="Funcionários" defaultOpen>
           <ListItemButton component={NavLink} to="/funcionarios/cadastrar">
-            <ListItemIcon><AddCircleOutlineIcon /></ListItemIcon>
+            <ListItemIcon sx={{ minWidth: 40 }}><AddCircleOutlineIcon /></ListItemIcon>
             <ListItemText primary="Cadastrar" />
           </ListItemButton>
-          <ListItemButton>
-            <ListItemIcon><VisibilityIcon /></ListItemIcon>
+          <ListItemButton component={NavLink} to="/funcionarios/visualizar">
+            <ListItemIcon sx={{ minWidth: 40 }}><VisibilityIcon /></ListItemIcon>
             <ListItemText primary="Visualizar" />
           </ListItemButton>
         </Group>
+
         <Group icon={<WorkIcon />} label="Serviços">
           <ListItemButton><ListItemText primary="Lista" /></ListItemButton>
         </Group>
+
         <Group icon={<Inventory2Icon />} label="Produtos">
           <ListItemButton><ListItemText primary="Estoque" /></ListItemButton>
         </Group>
+
         <Group icon={<EventAvailableIcon />} label="Agenda">
           <ListItemButton><ListItemText primary="Calendário" /></ListItemButton>
         </Group>
+
         <Group icon={<SettingsIcon />} label="Configurações">
           <ListItemButton><ListItemText primary="Preferências" /></ListItemButton>
         </Group>
       </List>
-    </Drawer>
+    </DrawerStyled>
   )
 }
