@@ -1,21 +1,16 @@
 package com.barberbross.BarberBross.model;
 
+import com.barberbross.BarberBross.enums.EstadoCivil;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.barberbross.BarberBross.enums.EstadoCivil;
-
-import jakarta.persistence.*;
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
-@Table(
-    name = "funcionario",
-    uniqueConstraints  = {
-        @UniqueConstraint(columnNames = {"cpf"}), 
-        @UniqueConstraint(columnNames = {"rg"})
-    }
-    )
+@Table(name = "funcionario")
 public class Funcionario {
 
     @Id
@@ -34,9 +29,10 @@ public class Funcionario {
     @Column(length = 15, nullable = false)
     private String telefone;
     
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false)
     private LocalDate nascimento;
 
     @Enumerated(EnumType.STRING)
@@ -46,6 +42,7 @@ public class Funcionario {
     @JoinColumn(name = "enderecoid", referencedColumnName = "enderecoid")
     private Endereco endereco;
 
+    @JsonIgnoreProperties({"funcionario"})
     @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Agendamento> agendamentos = new ArrayList<>();
 

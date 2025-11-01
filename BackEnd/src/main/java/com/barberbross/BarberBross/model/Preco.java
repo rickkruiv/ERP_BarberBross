@@ -30,7 +30,7 @@ public class Preco {
 
     private String descricao;
 
-    @OneToMany(mappedBy = "preco", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "valorTotal", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Preco() {}

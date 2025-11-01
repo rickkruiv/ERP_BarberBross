@@ -1,11 +1,15 @@
 package com.barberbross.BarberBross.model;
 
 import com.barberbross.BarberBross.enums.TipoProdServ;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.hibernate.engine.internal.Cascade;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "categoria")
 public class Categoria {
@@ -24,8 +28,9 @@ public class Categoria {
     @Column(nullable = false)
     private TipoProdServ tipo;
 
-    //@Column(nullable = false, unique = false)
-    //private Long ProdServId; q isso?
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Servico> servicos;
 
     public Categoria() {}
     

@@ -42,6 +42,4 @@ public class FornecedorController {
         fornecedorService.deletarFornecedor(id);
         return ResponseEntity.noContent().build();
     }
-
-
 }

@@ -1,10 +1,13 @@
 package com.barberbross.BarberBross.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -25,13 +28,18 @@ public class Cliente {
     @Column(length = 15, nullable = false)
     private String telefone;
 
+    @JsonIgnoreProperties({"cliente"})
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Cliente() {}
 
     public Long getClienteId() { return clienteId; }
     public void setClienteId(Long clienteId) { this.clienteId = clienteId; }
+
+    public List<Agendamento> getAgendamentos() { return agendamentos; }
+    public void setAgendamentos(List<Agendamento> agendamentos) { this.agendamentos = agendamentos; }
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }

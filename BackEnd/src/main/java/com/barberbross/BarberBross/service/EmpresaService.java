@@ -29,7 +29,7 @@ public class EmpresaService {
         empresaEditada.setNomeFantasia(empresa.getNomeFantasia());
         empresaEditada.setCnpj(empresa.getCnpj());
         empresaEditada.setEmail(empresa.getEmail());
-        empresaEditada.setEnderecoid(empresa.getEnderecoid());
+        empresaEditada.setEndereco(empresa.getEndereco());
         empresaEditada.setTelefone(empresa.getTelefone());
         empresaEditada.setTipoAssinatura(empresa.getTipoAssinatura());
         empresaEditada.setAgendamentos(empresa.getAgendamentos());

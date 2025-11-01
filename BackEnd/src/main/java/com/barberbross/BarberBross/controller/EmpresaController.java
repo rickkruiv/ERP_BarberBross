@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -17,7 +18,7 @@ public class EmpresaController {
     @Autowired
     private EmpresaService empresaService;
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<Empresa> salvarEmpresa(@RequestBody Empresa novaEmpresa){
         return ResponseEntity.status(HttpStatus.CREATED).body(empresaService.salvarEmpresa(novaEmpresa));
     }

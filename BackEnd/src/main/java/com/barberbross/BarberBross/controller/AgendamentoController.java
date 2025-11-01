@@ -28,12 +28,15 @@ public class AgendamentoController {
         return ResponseEntity.ok(agendamentoService.listarAgendamentos());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Agendamento> buscarAgendamentoPorId(@PathVariable Long id){
+        return ResponseEntity.ok(agendamentoService.buscarAgendamentoPorId(id));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deletarAgendamento(@PathVariable Long id){
         agendamentoService.deletarAgendamento(id);
         return ResponseEntity.noContent().build();
     }
-
-
 
 }

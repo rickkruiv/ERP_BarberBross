@@ -1,11 +1,14 @@
 package com.barberbross.BarberBross.model;
 
 import com.barberbross.BarberBross.enums.TipoAssinatura;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "empresa")
 public class Empresa {
@@ -20,9 +23,6 @@ public class Empresa {
     @Column(nullable = false)
     private String nomeFantasia;
 
-    @Column(nullable = true, unique = true)
-    private Long enderecoId;
-
     @Column(nullable = false, unique = true, length = 18)
     private String cnpj;
 
@@ -36,7 +36,13 @@ public class Empresa {
     @Column(nullable = false)
     private TipoAssinatura tipoAssinatura;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "enderecoid", nullable = false)
+    private Endereco endereco;
+
+    @JsonIgnoreProperties({"empresa"})
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Empresa() {}
@@ -50,8 +56,8 @@ public class Empresa {
     public String getNomeFantasia() { return nomeFantasia; }
     public void setNomeFantasia(String nomeFantasia) {this.nomeFantasia = nomeFantasia; }
 
-    public Long getEnderecoid() { return enderecoId; }
-    public void setEnderecoid(Long enderecoId) { this.enderecoId = enderecoId; }
+    public Endereco getEndereco() { return endereco; }
+    public void setEndereco(Endereco endereco) { this.endereco = endereco; }
 
     public String getCnpj() { return cnpj; }
     public void setCnpj(String cnpj) { this.cnpj = cnpj; }

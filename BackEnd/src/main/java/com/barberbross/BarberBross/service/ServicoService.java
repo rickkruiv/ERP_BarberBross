@@ -29,8 +29,8 @@ public class ServicoService {
         servicoEditado.setNome(servico.getNome());
         servicoEditado.setDescricao(servico.getDescricao());
         servicoEditado.setTempoEstimado(servico.getTempoEstimado());
-        servicoEditado.setCategoriaId(servico.getCategoriaId());
-        servicoEditado.setPreco_id(servico.getPrecoId());
+        servicoEditado.setCategoria(servico.getCategoria());
+        servicoEditado.setPreco(servico.getPreco());
 
         return servicoRepository.save(servicoEditado);
     }

@@ -1,11 +1,7 @@
 package com.barberbross.BarberBross.controller;
 
-import com.barberbross.BarberBross.model.Produto;
 import com.barberbross.BarberBross.model.Servico;
-import com.barberbross.BarberBross.service.ProdutoService;
 import com.barberbross.BarberBross.service.ServicoService;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

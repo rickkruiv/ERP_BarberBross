@@ -1,10 +1,12 @@
 package com.barberbross.BarberBross.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "servico")
 public class Servico {
@@ -13,7 +15,7 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long servicoId;
 
-    @Column(nullable = false, length = 50) //unique? <- Cepa q sim
+    @Column(nullable = false, length = 50)
     private String nome;
 
     @Column(nullable = true, length = 100)
@@ -22,12 +24,14 @@ public class Servico {
     @Column(nullable = false)
     private Integer tempoEstimado;
 
-    @Column(nullable = false)
-    private Long categoriaId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoriaId", nullable = false)
+    private Categoria categoria;
 
     @Column(nullable = false)
-    private Long precoId;
+    private double preco;
 
+    @JsonIgnoreProperties({"servico"})
     @OneToMany(mappedBy = "servico", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Agendamento> agendamentos = new ArrayList<>();
 
@@ -45,10 +49,12 @@ public class Servico {
     public Integer getTempoEstimado() { return tempoEstimado; }
     public void setTempoEstimado(Integer tempoEstimado) { this.tempoEstimado = tempoEstimado; }
 
-    public Long getCategoriaId() { return categoriaId; }
-    public void setCategoriaId(Long categoriaId) { this.categoriaId = categoriaId; }
+    public Categoria getCategoria() { return categoria; }
+    public void setCategoria(Categoria categoria) { this.categoria = categoria; }
 
-    public Long getPrecoId() { return precoId; }
-    public void setPreco_id(Long precoId) { this.precoId = precoId; }
+    public double getPreco() { return preco; }
+    public void setPreco(Double preco) { this.preco = preco; }
 
+    public List<Agendamento> getAgendamentos() { return agendamentos; }
+    public void setAgendamentos(List<Agendamento> agendamentos) { this.agendamentos = agendamentos; }
 }

@@ -2,7 +2,6 @@ package com.barberbross.BarberBross.controller;
 
 import com.barberbross.BarberBross.model.Pagamento;
 import com.barberbross.BarberBross.service.PagamentoService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,25 +1,48 @@
 package com.barberbross.BarberBross.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "endereco")
 public class Endereco {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long enderecoid;
 
+    @Column(nullable = false, length = 9)
     private String cep;
+
+    @Column(nullable = false)
     private String logradouro;
+
     private String complemento;
-    private String bairro;
-    private String cidade;
-    private String uf;
+
+    @Column(nullable = false)
     private int numero;
+
+    @Column(nullable = false)
+    private String cidade;
+
+    @Column(nullable = false)
+    private String bairro;
+
+    @Column(nullable = false, length = 2)
+    private String uf;
+
+    @JsonBackReference
+    @OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Funcionario funcionario;
+
+    @JsonBackReference
+    @OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Empresa empresa;
     
     public Long getEnderecoid() { return enderecoid; }
     public void setEnderecoid( Long enderecoid ) { this.enderecoid = enderecoid; }
