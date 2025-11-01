@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
-@Table(name = "agendamento")
+@Table(name = "agendamentos")
 public class Agendamento {
 
     @Id
@@ -17,6 +17,21 @@ public class Agendamento {
 
     @Column(nullable = false)
     private LocalDateTime dataHorario;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    @Column(nullable = true, length = 100)
+    private String observacao;
+
+    @JsonIgnoreProperties({"agendamentos"})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "servicoId", nullable = false)
+    private Servico servico;
+
+    @Column(nullable = false)
+    private double valorTotal;
 
     @JsonIgnoreProperties({"agendamentos"})
     @ManyToOne(fetch = FetchType.LAZY)
@@ -28,24 +43,9 @@ public class Agendamento {
     @JoinColumn(name = "empresaId", nullable = false)
     private Empresa empresa;
 
-    @JsonIgnoreProperties({"agendamentos"})
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "servicoId", nullable = false)
-    private Servico servico;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Status status;
-
-    @Column(nullable = true, length = 100)
-    private String observacao;
-
     //@ManyToOne(fetch = FetchType.LAZY)
     //@JoinColumn(name = "precoId", nullable = false)
     //private Preco preco;
-
-    @Column(nullable = false)
-    private double valorTotal;
 
     @JsonIgnoreProperties({"agendamentos"})
     @ManyToOne(fetch = FetchType.LAZY)

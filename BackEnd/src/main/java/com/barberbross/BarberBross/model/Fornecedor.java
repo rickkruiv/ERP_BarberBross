@@ -3,7 +3,7 @@ package com.barberbross.BarberBross.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "fornecedor")
+@Table(name = "fornecedores")
 public class Fornecedor {
 
     @Id

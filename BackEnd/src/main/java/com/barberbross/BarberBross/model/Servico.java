@@ -1,5 +1,6 @@
 package com.barberbross.BarberBross.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
-@Table(name = "servico")
+@Table(name = "servicos")
 public class Servico {
 
     @Id
@@ -33,6 +34,7 @@ public class Servico {
 
     @JsonIgnoreProperties({"servico"})
     @OneToMany(mappedBy = "servico", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Servico() {}

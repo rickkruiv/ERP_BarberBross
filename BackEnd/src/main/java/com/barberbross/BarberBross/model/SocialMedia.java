@@ -3,7 +3,7 @@ package com.barberbross.BarberBross.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "redeSocial")
+@Table(name = "redeSociais")
 public class SocialMedia {
 
     @Id
